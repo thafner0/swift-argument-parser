@@ -1,4 +1,22 @@
 # Swift Argument Parser
+## This Fork
+
+This fork was made to work on any issue(s) to see how to interact with open-source coding.
+
+The issue(s) we will attempt to fix will be here:
+- Issue #683 (Link coming soon)
+
+## Issue 683
+Issue: "When a property in a ParsableCommand has a custom Decodable implementation, but it is not a Flag, Option or Argument, and the custom decodable implementation uses nestedContainer, the program will crash."
+
+Firstly, is the arg-par is supposed to do such? The official 1.5 release states, "Straightforward, type-safe argument parsing for Swift". "nestedContainer" is a instance method that does take a type and key as a paramter. Since it is a method, it will not pass as a parameter. The issue author did note the expected behavior should be, "[The] property should be ignored", and instead, the program crashes with the error:
+
+```swift
+ArgumentParser/ArgumentDecoder.swift:135: Fatal error
+[1]    77018 illegal hardware instruction  [executable path] --help
+```
+
+Instead of crashing, we want the property to be ignored. I will be checking the file "ParsableArgumentsValidation.swift" to check if there can be a way to have it ignore methods instead of crashing.
 
 ## Usage
 
