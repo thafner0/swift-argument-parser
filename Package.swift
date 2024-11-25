@@ -48,18 +48,22 @@ var package = Package(
             dependencies: ["generate-manual"]),
 
         // Examples
+        // Roll
         .executableTarget(
             name: "roll",
             dependencies: ["ArgumentParser"],
             path: "Examples/roll"),
+        // Math
         .executableTarget(
             name: "math",
             dependencies: ["ArgumentParser"],
             path: "Examples/math"),
+        // Repeat
         .executableTarget(
             name: "repeat",
             dependencies: ["ArgumentParser"],
             path: "Examples/repeat"),
+        // Color
         .executableTarget(
             name: "color",
             dependencies: ["ArgumentParser"],
