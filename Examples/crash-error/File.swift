@@ -34,4 +34,7 @@ struct MyCustomDecodableStruct: Decodable {
         let output = try container.nestedContainer(keyedBy: OutputCodingKeys.self, forKey: .output)
     /* rest of the implementation */
   }
-}
+    func run() {
+        print("Done")
+    } // Run func
+} // Parsabale Command
