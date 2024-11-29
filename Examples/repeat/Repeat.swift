@@ -52,7 +52,7 @@ struct Repeat: ParsableCommand {
                 print("\(i): \(phrase)")
             } else {
                 print(phrase)
-            }
-        }
-    }
-}
+            } // else
+        } // for
+    } // Run function
+} // Parsable command
