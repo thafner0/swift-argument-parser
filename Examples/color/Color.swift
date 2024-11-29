@@ -15,10 +15,10 @@ import ArgumentParser
 @main
 struct Color: ParsableCommand {
   @Option(help: "Your favorite color.")
-  var fav: ColorOptions
+    var fav: ColorOptions = .red
 
   @Option(help: .init("Your second favorite color.", discussion: "This is optional."))
-  var second: ColorOptions?
+    var second: ColorOptions?
 
   func run() {
     print("My favorite color is \(fav.rawValue)")
@@ -41,8 +41,8 @@ public enum ColorOptions: String, CaseIterable, ExpressibleByArgument {
       return "A blue color."
     case .yellow:
       return "A yellow color."
-    }
-  }
+    } // switch case
+  } // dflt desc
 
   public var description: String {
     switch self {
@@ -52,6 +52,6 @@ public enum ColorOptions: String, CaseIterable, ExpressibleByArgument {
       return "A blue color."
     case .yellow:
       return "A yellow color."
-    }
+    } // switch case
   }
 }
