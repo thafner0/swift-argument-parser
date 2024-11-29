@@ -18,3 +18,8 @@ add_executable(roll
   roll/SplitMix64.swift)
 target_link_libraries(roll PRIVATE
   ArgumentParser)
+  
+add_executable(crash-error
+  crash_error/File.swift)
+target_link_libraries(crash-error PRIVATE
+  ArgumentParser)
