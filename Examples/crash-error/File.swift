@@ -12,6 +12,8 @@ import ArgumentParser
 // Main struct
 @main
 struct Main: ParsableCommand {
+    // TODO: Fix this error
+    // "Missing argument for parameter 'from' in call"
   var property: MyCustomDecodableStruct = MyCustomDecodableStruct()
 }
 
@@ -30,7 +32,10 @@ struct MyCustomDecodableStruct: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        // TODO: add these things
+        // "Initialization of immutable value 'input' was never used; consider replacing with assignment to '_' or removing it"
         let input = try container.nestedContainer(keyedBy: InputCodingKeys.self, forKey: .input)
+        // "Initialization of immutable value 'output' was never used; consider replacing with assignment to '_' or removing it"
         let output = try container.nestedContainer(keyedBy: OutputCodingKeys.self, forKey: .output)
     /* rest of the implementation */
   }
