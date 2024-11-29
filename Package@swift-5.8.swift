@@ -67,7 +67,11 @@ var package = Package(
             name: "color",
             dependencies: ["ArgumentParser"],
             path: "Examples/color"),
-
+        .executableTarget(
+            name: "crash-error",
+            dependencies: ["ArgumentParser"],
+            path: "Examples/crash-error"),
+        
         // Tools
         .executableTarget(
             name: "generate-manual",
