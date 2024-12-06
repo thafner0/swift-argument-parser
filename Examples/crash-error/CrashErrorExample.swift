@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CrashErrorExample.swift
 //  swift-argument-parser
 //
 //  Created by atesillos on 11/25/24.
@@ -14,7 +14,7 @@ import ArgumentParser
 struct Main: ParsableCommand {
     // TODO: Fix this error
     // "Missing argument for parameter 'from' in call"
-  var property: MyCustomDecodableStruct = MyCustomDecodableStruct()
+    var property: MyCustomDecodableStruct = MyCustomDecodableStruct()
 }
 
 // Argument
@@ -29,7 +29,7 @@ struct MyCustomDecodableStruct: Decodable {
     enum OutputCodingKeys: String, CodingKey {
         case outputLanguage = "language"
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         // TODO: add these things
@@ -37,9 +37,9 @@ struct MyCustomDecodableStruct: Decodable {
         let input = try container.nestedContainer(keyedBy: InputCodingKeys.self, forKey: .input)
         // "Initialization of immutable value 'output' was never used; consider replacing with assignment to '_' or removing it"
         let output = try container.nestedContainer(keyedBy: OutputCodingKeys.self, forKey: .output)
-    /* rest of the implementation */
-  }
+        /* rest of the implementation */
+    }
     func run() {
         print("Done")
     } // Run func
-} // Parsabale Command
+} // Parsable Command
