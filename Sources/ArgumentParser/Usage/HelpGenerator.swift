@@ -135,6 +135,7 @@ internal struct HelpGenerator {
   var abstract: String
   var usage: String
   var sections: [Section]
+  var extendedDiscussion: String
   
   init(commandStack: [ParsableCommand.Type], visibility: ArgumentVisibility) {
     guard let currentCommand = commandStack.last else {
@@ -171,6 +172,7 @@ internal struct HelpGenerator {
     }
 
     self.sections = HelpGenerator.generateSections(commandStack: commandStack, visibility: visibility)
+    self.extendedDiscussion = currentCommand.configuration.extendedDiscussion
   }
 
   init(_ type: ParsableArguments.Type, visibility: ArgumentVisibility) {
@@ -362,11 +364,17 @@ internal struct HelpGenerator {
     let renderedUsage = usage.isEmpty
     ? ""
     : "USAGE: \(usage.hangingIndentingEachLine(by: 7))\n\n"
+    
+    let renderedExtendedDiscussion = if extendedDiscussion.isEmpty { "" } else {
+      "\n\nEXTENDED DISCUSSION:\n\(extendedDiscussion)"
+    }
 
+    
     return """
     \(renderedAbstract)\
     \(renderedUsage)\
-    \(renderedSections)\(helpSubcommandMessage)
+    \(renderedSections)\(helpSubcommandMessage)\
+    \(renderedExtendedDiscussion)
     """
   }
 }

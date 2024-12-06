@@ -85,6 +85,12 @@ public struct CommandConfiguration: Sendable {
   /// or `commandName` itself if provided.
   public var aliases: [String]
 
+  /// An expanded discussion section.
+  ///
+  /// This section is intended to be used for large amounts of information to be consulted by users desiring a
+  /// deep understanding of the command in question.
+  public var extendedDiscussion: String
+    
   /// Creates the configuration for a command.
   ///
   /// - Parameters:
@@ -126,7 +132,8 @@ public struct CommandConfiguration: Sendable {
     groupedSubcommands: [CommandGroup] = [],
     defaultSubcommand: ParsableCommand.Type? = nil,
     helpNames: NameSpecification? = nil,
-    aliases: [String] = []
+    aliases: [String] = [],
+    extendedDiscussion: String = ""
   ) {
     self.commandName = commandName
     self.abstract = abstract
@@ -139,6 +146,7 @@ public struct CommandConfiguration: Sendable {
     self.defaultSubcommand = defaultSubcommand
     self.helpNames = helpNames
     self.aliases = aliases
+    self.extendedDiscussion = extendedDiscussion
   }
 
   /// Creates the configuration for a command with a "super-command".
@@ -155,7 +163,8 @@ public struct CommandConfiguration: Sendable {
     groupedSubcommands: [CommandGroup] = [],
     defaultSubcommand: ParsableCommand.Type? = nil,
     helpNames: NameSpecification? = nil,
-    aliases: [String] = []
+    aliases: [String] = [],
+    extendedDiscussion: String = ""
   ) {
     self.commandName = commandName
     self._superCommandName = _superCommandName
@@ -169,6 +178,7 @@ public struct CommandConfiguration: Sendable {
     self.defaultSubcommand = defaultSubcommand
     self.helpNames = helpNames
     self.aliases = aliases
+    self.extendedDiscussion = extendedDiscussion
   }
 }
 
