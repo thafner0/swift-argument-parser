@@ -257,6 +257,9 @@ internal struct HelpGenerator {
         optionElements.append(element)
       }
     }
+    if !positionalElements.isEmpty {
+      optionElements.append(Section.Element(label: "--", abstract: "Process all remaining arguments as positional arguments as opposed to options or flags, even if they are preceeded by one or more dashes."))
+    }
 
     let configuration = commandStack.last!.configuration
 

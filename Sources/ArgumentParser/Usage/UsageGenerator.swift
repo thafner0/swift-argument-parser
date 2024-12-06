@@ -46,6 +46,17 @@ extension UsageGenerator {
   /// In `roff`.
   var synopsis: String {
     var options = Array(definition)
+    func synopsis(of options: [ArgumentDefinition]) -> String {
+      var options = options
+      let firstPositionalArgIndex = options.partition(by: { $0.isPositional })
+      var synopsisedOptions = options.map { $0.synopsis }
+      if firstPositionalArgIndex != options.endIndex {
+        synopsisedOptions.insert("[--]", at: firstPositionalArgIndex)
+      }
+      return synopsisedOptions
+        .joined(separator: " ")
+    }
+    
     switch options.count {
     case 0:
       return toolName
@@ -58,16 +69,12 @@ extension UsageGenerator {
       // If there are between 1 and 12 options left, print them, otherwise print
       // a simplified usage string.
       if !options.isEmpty, options.count <= 12 {
-        let synopsis = options
-          .map { $0.synopsis }
-          .joined(separator: " ")
+        let synopsis = synopsis(of: options)
         return "\(toolName) [<options>] \(synopsis)"
       }
       return "\(toolName) <options>"
     default:
-      let synopsis = options
-        .map { $0.synopsis }
-        .joined(separator: " ")
+      let synopsis = synopsis(of: options)
       return "\(toolName) \(synopsis)"
     }
   }
