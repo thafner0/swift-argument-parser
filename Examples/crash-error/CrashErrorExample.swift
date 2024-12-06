@@ -42,4 +42,6 @@ struct MyCustomDecodableStruct: Decodable {
     func run() {
         print("Done")
     } // Run func
+    
+    init() {}
 } // Parsable Command
